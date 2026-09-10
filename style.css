@@ -1,0 +1,516 @@
+```css
+/* =========================
+   تنظیمات اولیه
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    font-family: Tahoma, Arial, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #3da9fc 0%,
+            #1261c9 35%,
+            #071b3a 100%
+        );
+
+    color: white;
+}
+
+
+/* =========================
+   پس‌زمینه نور
+========================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: rgba(77, 190, 255, 0.15);
+
+    filter: blur(80px);
+
+    top: -200px;
+    left: -150px;
+
+    pointer-events: none;
+}
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 450px;
+    height: 450px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 120, 255, 0.15);
+
+    filter: blur(90px);
+
+    bottom: -200px;
+    right: -150px;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   کانتینر
+========================= */
+
+.container {
+    width: 100%;
+
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    z-index: 10;
+}
+
+
+/* =========================
+   کارت
+========================= */
+
+.card {
+    width: min(500px, 94vw);
+
+    padding: 45px 30px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.25);
+
+    animation: cardAppear 1s ease;
+}
+
+
+/* =========================
+   قلب اصلی
+========================= */
+
+.main-heart {
+    font-size: 75px;
+
+    margin-bottom: 20px;
+
+    filter:
+        drop-shadow(0 0 15px rgba(100, 200, 255, 0.8));
+
+    animation: heartbeat 1.5s infinite;
+}
+
+
+/* =========================
+   عنوان
+========================= */
+
+h1 {
+    font-size: 32px;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+
+/* =========================
+   متن سؤال
+========================= */
+
+.question {
+    font-size: 18px;
+
+    color: #dcefff;
+
+    margin-bottom: 15px;
+}
+
+.love-question {
+    font-size: 28px;
+
+    font-weight: bold;
+
+    color: white;
+
+    margin-bottom: 35px;
+
+    text-shadow:
+        0 0 15px rgba(120, 210, 255, 0.8);
+}
+
+
+/* =========================
+   دکمه‌ها
+========================= */
+
+.buttons {
+    min-height: 65px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+button {
+    border: none;
+
+    padding: 14px 35px;
+
+    border-radius: 50px;
+
+    font-family: inherit;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s,
+        box-shadow 0.25s;
+}
+
+
+/* =========================
+   دکمه آره
+========================= */
+
+.yes-btn {
+    color: #0752a5;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #b9e8ff
+        );
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.yes-btn:hover {
+    transform: scale(1.1);
+
+    box-shadow:
+        0 0 30px rgba(160, 225, 255, 0.9);
+}
+
+
+/* =========================
+   دکمه نه
+========================= */
+
+.no-btn {
+    color: white;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+
+/* =========================
+   صفحه موفقیت
+========================= */
+
+.success-card {
+    display: none;
+
+    animation: successAppear 1s ease;
+}
+
+.big-heart {
+    font-size: 100px;
+
+    margin-bottom: 15px;
+
+    animation: heartbeat 1.2s infinite;
+
+    filter:
+        drop-shadow(0 0 20px rgba(100, 210, 255, 0.9));
+}
+
+
+.message {
+    font-size: 34px;
+
+    font-weight: bold;
+
+    color: #ffffff;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 20px rgba(100, 210, 255, 0.9);
+}
+
+
+.message-small {
+    font-size: 17px;
+
+    line-height: 2;
+
+    color: #dcefff;
+}
+
+
+.divider {
+    margin: 25px 0;
+
+    font-size: 20px;
+
+    color: #a9e4ff;
+}
+
+
+.final-message {
+    font-size: 18px;
+
+    line-height: 2;
+
+    color: #f0f9ff;
+}
+
+
+.signature {
+    margin-top: 30px;
+
+    font-size: 15px;
+
+    color: #b8e7ff;
+}
+
+
+/* =========================
+   بارش قلب‌ها
+========================= */
+
+.heart-rain {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 1;
+}
+
+
+.heart-rain span {
+    position: absolute;
+
+    top: -50px;
+
+    color: #8edcff;
+
+    font-size: 20px;
+
+    opacity: 0.8;
+
+    animation: fall linear infinite;
+
+    filter:
+        drop-shadow(0 0 8px rgba(100, 210, 255, 0.8));
+}
+
+
+/* اندازه‌های مختلف قلب */
+
+.heart-rain span:nth-child(3n) {
+    font-size: 28px;
+}
+
+.heart-rain span:nth-child(4n) {
+    font-size: 15px;
+}
+
+.heart-rain span:nth-child(5n) {
+    font-size: 35px;
+}
+
+
+/* =========================
+   انیمیشن قلب
+========================= */
+
+@keyframes fall {
+
+    0% {
+        transform:
+            translateY(-50px)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    90% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   ضربان قلب
+========================= */
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+
+/* =========================
+   ورود کارت
+========================= */
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(40px)
+            scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes successAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+/* =========================
+   موبایل
+========================= */
+
+@media (max-width: 600px) {
+
+    .card {
+        padding: 40px 20px;
+
+        border-radius: 25px;
+    }
+
+    .main-heart {
+        font-size: 60px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .question {
+        font-size: 16px;
+    }
+
+    .love-question {
+        font-size: 24px;
+    }
+
+    button {
+        padding: 13px 28px;
+
+        font-size: 16px;
+    }
+
+    .message {
+        font-size: 28px;
+    }
+
+    .big-heart {
+        font-size: 80px;
+    }
+
+    .final-message {
+        font-size: 16px;
+    }
+}
+```
